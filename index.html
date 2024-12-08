@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <div id="calculadora">
+        <div id="tabelaCalculadora">
+            <h1>CALCULADORA</h1>
+            <p id="resultado"></p>
+            <table>
+                <tr></tr>
+                <tr>
+                    <td><button onclick="apagar()">C</button></td>
+                    <td><button onclick="apagarUmItem()"><</button></td>
+                    <td><button onclick="insert('/')">/</button></td>
+                    <td><button onclick="insert('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="insert('7')">7</button></td>
+                    <td><button onclick="insert('8')">8</button></td>
+                    <td><button onclick="insert('9')">9</button></td>
+                    <td><button onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="insert('4')">4</td>
+                    <td><button onclick="insert('5')">5</button></td>
+                    <td><button onclick="insert('6')">6</button></td>
+                    <td><button onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="insert('1')">1</button></td>
+                    <td><button onclick="insert('2')">2</button></td>
+                    <td><button onclick="insert('3')">3</button></td>
+                    <td id="botaoIgual"  rowspan="2"><button style="height: 140px; border-radius: 6%;" onclick="calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button style="width: 130px; border-radius: 10%;" onclick="insert('0')">0</button></td>
+                    <td><button onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function insert(numero){
+           let num = document.getElementById('resultado').innerHTML 
+           document.getElementById('resultado').innerHTML = num + numero
+        }
+
+        function apagar(){
+            window.document.getElementById('resultado').innerHTML = ""
+        }
+
+        function apagarUmItem(){
+            let resultado = document.getElementById('resultado').innerHTML
+            document.getElementById('resultado').innerHTML = resultado.substring(0,resultado.length -1)
+        }
+
+        function calcular(){
+            let resultado = document.getElementById('resultado').innerHTML
+            if (resultado){
+                window.document.getElementById('resultado').innerHTML = eval(resultado)
+            }
+            else{
+                window.alert('Campo vazio')
+            }
+        }
+    </script>
+</body>
+</html>
